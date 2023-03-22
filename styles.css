@@ -34,7 +34,7 @@ body {
 .keys > div{
     display: flex;
     justify-content: space-between;
-    margin: 10px 30px;
+    margin: 12px 30px;
     column-gap: 20px;
 }
 
@@ -56,6 +56,10 @@ body {
     border-radius: 70px;
     justify-content: left;
     padding-left: 28px;
+    background-color: rgb(152, 150, 150);
+}
+
+.keys .delete {
     background-color: rgb(152, 150, 150);
 }
 
