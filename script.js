@@ -36,7 +36,8 @@ let opChange = false;
 
 numKeys.forEach(key => {
     key.addEventListener("click", event => {
-        if (typeof Number(display.textContent) !== "number") {
+        ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
+        if (isNaN(display.textContent) || display.textContent === "0") {
             display.textContent = "";
         }
         if (opChange === true) {
@@ -61,15 +62,19 @@ numKeys.forEach(key => {
 
 ops.forEach(op => {
     op.addEventListener("click", event => {
-        valuesList.push(Number(display.textContent));
-        display.textContent = "";
-        currentOp = event.target.textContent;
-        opChange = true;
+        ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
+        if (display.textContent != "") valuesList.push(Number(display.textContent));
+        if (valuesList.length !== 0) {
+            display.textContent = "";
+            currentOp = event.target.textContent;
+            event.target.style.backgroundColor = "rgb(5, 110, 88)";
+            opChange = true;
+        }
     });
 });
 
 calc.addEventListener("click", () => {
-    valuesList.push(Number(display.textContent));
+    if (display.textContent != "") valuesList.push(Number(display.textContent));
     let value = valuesList[0];
     if (opsList.length !== 0) {
         for (let i = 0; i < opsList.length; i++) {
@@ -91,6 +96,7 @@ calc.addEventListener("click", () => {
     }
     valuesList.length = 0;
     opsList.length = 0;
+    currentOp = "";
 });
 
 cancel.addEventListener("click", () => {
