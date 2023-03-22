@@ -74,6 +74,7 @@ ops.forEach(op => {
 });
 
 calc.addEventListener("click", () => {
+    ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
     if (display.textContent != "") valuesList.push(Number(display.textContent));
     let value = valuesList[0];
     if (opsList.length !== 0) {
@@ -83,11 +84,12 @@ calc.addEventListener("click", () => {
     }
     let valStr = value.toString();
     if (valStr.length > 9) {
-        if (valStr.includes(".")) {
-            value = value.toFixed(Math.abs(9 - valStr.split(".")[0].length));
+        if (valStr.includes(".") && !valStr.includes("e")) {
+            value = value.toFixed(valStr.split(".")[0].length - 9);
         }
         else {
-            value = value.toExponential();
+            console.log(value);
+            value = value.toExponential(4);
         }
     }
     display.textContent = value;
