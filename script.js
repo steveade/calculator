@@ -29,11 +29,17 @@ let cancel = document.querySelector(".cancel");
 let display = document.querySelector(".display");
 let ops = document.querySelectorAll(".op");
 let calc = document.querySelector(".equal");
+let currentOp = "";
 let valuesList = [];
 let opsList = [];
+let opChange = false;
 
 numKeys.forEach(key => {
     key.addEventListener("click", event => {
+        if (opChange === true) {
+            opsList.push(currentOp);
+            opChange = false;
+        }
         if (display.textContent.length <= 9) {
             if (event.target.textContent.includes(".")) {
                 if (display.textContent === "") {
@@ -54,6 +60,27 @@ ops.forEach(op => {
     op.addEventListener("click", event => {
         valuesList.push(Number(display.textContent));
         display.textContent = "";
-        opsList.push(event.target.textContent);
-    })
+        currentOp = event.target.textContent;
+        opChange = true;
+    });
+});
+
+calc.addEventListener("click", () => {
+    valuesList.push(Number(display.textContent));
+    let value = valuesList[0];
+    if (opsList.length !== 0) {
+        for (let i = 0; i < opsList.length; i++) {
+            value = operate(opsList[i], value, valuesList[i + 1]);
+        }
+    }
+    display.textContent = value;
+    valuesList.length = 0;
+    opsList.length = 0;
+});
+
+cancel.addEventListener("click", () => {
+    valuesList.length = 0;
+    opsList.length = 0;
+    currentOp = "";
+    display.textContent = "";
 })
