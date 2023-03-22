@@ -73,6 +73,15 @@ calc.addEventListener("click", () => {
             value = operate(opsList[i], value, valuesList[i + 1]);
         }
     }
+    let valStr = value.toString();
+    if (valStr.length > 9) {
+        if (valStr.includes(".")) {
+            value = value.toFixed(Math.abs(9 - valStr.split(".")[0].length));
+        }
+        else {
+            value = value.toExponential();
+        }
+    }
     display.textContent = value;
     valuesList.length = 0;
     opsList.length = 0;
