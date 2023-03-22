@@ -29,6 +29,7 @@ let cancel = document.querySelector(".cancel");
 let display = document.querySelector(".display");
 let ops = document.querySelectorAll(".op");
 let calc = document.querySelector(".equal");
+let del = document.querySelector(".delete");
 let currentOp = "";
 let valuesList = [];
 let opsList = [];
@@ -84,8 +85,8 @@ calc.addEventListener("click", () => {
     }
     let valStr = value.toString();
     if (valStr.length > 9) {
-        if (valStr.includes(".") && !valStr.includes("e")) {
-            value = value.toFixed(valStr.split(".")[0].length - 9);
+        if (valStr.includes(".") && !valStr.includes("e") && !valStr.split(".")[0] > 9) {
+            value = value.toFixed(valStr.split(".")[1].length - 9);
         }
         else {
             console.log(value);
@@ -106,4 +107,10 @@ cancel.addEventListener("click", () => {
     opsList.length = 0;
     currentOp = "";
     display.textContent = "";
-})
+});
+
+del.addEventListener("click", () => {
+    if (display.textContent !== "") {
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+    }
+});
