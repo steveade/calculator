@@ -36,6 +36,9 @@ let opChange = false;
 
 numKeys.forEach(key => {
     key.addEventListener("click", event => {
+        if (!Number(display.textContent)) {
+            display.textContent = "";
+        }
         if (opChange === true) {
             opsList.push(currentOp);
             opChange = false;
@@ -83,6 +86,9 @@ calc.addEventListener("click", () => {
         }
     }
     display.textContent = value;
+    if (valStr === "Infinity" || valStr === "-Infinity") {
+        display.textContent = "Math error";
+    }
     valuesList.length = 0;
     opsList.length = 0;
 });
