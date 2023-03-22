@@ -36,7 +36,7 @@ let opChange = false;
 
 numKeys.forEach(key => {
     key.addEventListener("click", event => {
-        if (!Number(display.textContent)) {
+        if (typeof Number(display.textContent) !== "number") {
             display.textContent = "";
         }
         if (opChange === true) {
