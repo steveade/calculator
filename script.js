@@ -30,6 +30,7 @@ let display = document.querySelector(".display");
 let ops = document.querySelectorAll(".op");
 let calc = document.querySelector(".equal");
 let valuesList = [];
+let opsList = [];
 
 numKeys.forEach(key => {
     key.addEventListener("click", event => {
@@ -48,3 +49,11 @@ numKeys.forEach(key => {
         }
     });
 });
+
+ops.forEach(op => {
+    op.addEventListener("click", event => {
+        valuesList.push(Number(display.textContent));
+        display.textContent = "";
+        opsList.push(event.target.textContent);
+    })
+})
