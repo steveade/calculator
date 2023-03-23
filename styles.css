@@ -51,6 +51,12 @@ body {
     cursor: pointer;
 }
 
+.keys div :hover {
+    background-color: rgb(109, 109, 109);
+    transform: translateY(-2px);
+    transition: .5s;
+}
+
 .keys .cancel {
     flex-grow: 2;
     border-radius: 70px;
@@ -72,7 +78,19 @@ body {
 
 .keys .op,
 .keys .equal {
-    background-color: rgb(9, 189, 150);
+    background-color: rgb(8, 85, 172);
+}
+
+.keys .op:hover {
+    background-color: rgb(13, 180, 213);
+}
+
+.keys .equal:hover {
+    background-color: rgb(19, 198, 73);
+}
+
+.keys .top :hover {
+    background-color: rgb(152, 45, 45);
 }
 
 .credit {
