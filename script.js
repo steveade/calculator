@@ -42,7 +42,7 @@ function deleteText() {
 }
 
 function calculateValue() {
-    ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
+    ops.forEach(op => op.style.backgroundColor = "rgb(8, 85, 172)");
     if (display.textContent != "") valuesList.push(Number(display.textContent));
     let value = valuesList[0];
     if (opsList.length !== 0) {
@@ -77,7 +77,7 @@ function clearDisplay() {
 }
 
 function inputNum(event, source) {
-    ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
+    ops.forEach(op => op.style.backgroundColor = "rrgb(8, 85, 172)");
     if (isNaN(display.textContent) || display.textContent === "0") {
         display.textContent = "";
     }
@@ -101,14 +101,14 @@ function inputNum(event, source) {
 }
 
 function performOp(event, source) {
-    ops.forEach(op => op.style.backgroundColor = "rgb(9, 189, 150)");
+    ops.forEach(op => op.style.backgroundColor = "rgb(8, 85, 172)");
     if (display.textContent != "") valuesList.push(Number(display.textContent));
     if (valuesList.length !== 0) {
         display.textContent = "";
         currentOp = source;
         ops.forEach(op => {
             if (op.textContent === source) {
-                op.style.backgroundColor = "rgb(5, 110, 88)";
+                op.style.backgroundColor = "rgb(8, 57, 134)";
             }
         });
         opChange = true;
