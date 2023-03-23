@@ -89,7 +89,8 @@ body {
     background-color: rgb(19, 198, 73);
 }
 
-.keys .top :hover {
+.keys .cancel:hover,
+.keys .delete:hover {
     background-color: rgb(152, 45, 45);
 }
 
